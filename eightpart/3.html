@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person1() {}
+
+      // 原型模式
+
+      function Person() {}
+      Person.prototype.name = "dvd";
+      Person.prototype.age = 29;
+      Person.prototype.job = "mn";
+      Person.prototype.sayName = function () {
+        console.log(this.name);
+      };
+
+      let person1 = new Person();
+      person1.sayName(); // "Nicholas"
+      let person2 = new Person();
+      person2.sayName(); // "Nicholas"
+      console.log(person1.sayName == person2.sayName); // true
+
+      console.log(Person, null instanceof Object);
+    </script>
+  </body>
+</html>

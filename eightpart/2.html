@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.say = function () {
+          console.log(`我是${this.name}我${this.age}岁了`);
+        };
+      }
+
+      const person1 = new Person("ny", 29);
+      const person2 = new Person("fz", 30);
+
+      console.log(person1, typeof person1, person1 instanceof Person);
+      console.log(person2, "___", Person);
+      console.log(person1.say === person2.say);
+
+      function Person3(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = sayName;
+      }
+      function sayName() {
+        console.log(this.name);
+      }
+
+      let person3 = new Person3("Nicholas", 29, "Software Engineer");
+      let person4 = new Person3("Greg", 27, "Doctor");
+      person3.sayName(); // Nicholas
+      person4.sayName(); // Greg
+
+      console.log(person3.sayName === person4.sayName, "???");
+    </script>
+  </body>
+</html>

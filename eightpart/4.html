@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原型模式</title>
+  </head>
+  <body>
+    <script>
+      function SuperType() {
+        this.name = "SuperType";
+        this.property = true;
+      }
+
+      SuperType.prototype.getSuperTypeName = function () {
+        console.log(this.name);
+        return this.property;
+      };
+
+      function SubType() {
+        this.name = "subtype";
+        this.property = false;
+      }
+
+      SubType.prototype = new SuperType();
+      SubType.prototype.getSubtypeName = function () {
+        console.log(this.name);
+        return this.property;
+      };
+      const instance = new SubType();
+
+      console.log(
+        "---+++",
+        instance,
+        instance.name,
+        "---",
+        instance.getSubtypeName(),
+        instance.getSuperTypeName(),
+        instance instanceof SubType,
+        instance instanceof SuperType
+      );
+
+      //   instance.__proto__ === Subtype.prototype;
+      //   instance.__proto__.__proto__ === SubType.prototype.__proto__;
+      //   SubType.prototype.__proto__ == SubType.prototype;
+      //   SubType.prototype.__proto__ === Object.prototype;
+      //   SubType.prototype.__proto__.prototype === Object;
+      //   SubType.prototype.__proto__.__proto__ === null;
+
+      console.log(instance.__proto__ === SubType.prototype);
+      console.log(instance.__proto__.__proto__ === SubType.prototype.__proto__);
+      console.log(SubType.prototype.__proto__ === SuperType.prototype);
+      console.log(SuperType.prototype.__proto__ === Object.prototype);
+      console.log(SuperType.prototype.__proto__.prototype, Object); // 为false 一个是undefined
+      console.log(SuperType.prototype.__proto__.__proto__ === null);
+    </script>
+  </body>
+</html>

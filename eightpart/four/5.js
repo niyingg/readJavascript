@@ -27,3 +27,19 @@ console.log(iter.next());
 console.log(iter.next());
 
 console.log(Person.prototype, p.__proto__);
+
+// 支持生成器方法， 通过添加一个默认的迭代器，把实例变成可迭代对象
+class Person1 {
+  constructor() {
+    this.nicknames = ["jack", "nu", "88"];
+  }
+
+  [Symbol.iterator]() {
+    return this.nicknames.entries();
+  }
+}
+
+let p1 = new Person1();
+for (let [idx, nickname] of p1) {
+  console.log(idx, nickname);
+}

@@ -43,3 +43,24 @@ let p1 = new Person1();
 for (let [idx, nickname] of p1) {
   console.log(idx, nickname);
 }
+
+const [d, v, n] = p1;
+console.log(d, v, n, "7777");
+
+class Example {
+  *createIterator() {
+    yield 1;
+    yield 2;
+  }
+  static *create() {
+    yield 3;
+  }
+}
+
+let a = new Example();
+
+const b = Example.create();
+const c = a.createIterator();
+const [aa] = c;
+
+console.log(aa, "====");
